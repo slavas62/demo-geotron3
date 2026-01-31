@@ -1,0 +1,14 @@
+{% extends "error.html" %}
+
+{% block title %}
+Error 500
+{% endblock %}
+
+{% block err_title %}
+Внутренняя ошибка сервера (ошибка 500)
+{% endblock %}
+
+{% block err_desc %}
+К сожалению, наш сервер сейчас не может выполнить Ваш запрос.
+Если вы опишете проблему, то мы ему в этом поможем <a href="mailto:support@spacecorp.ru?subject=500">support@spacecorp.ru</a>. 
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load static %}
+<div class="col">
+  <div class="card" style="background-image: url({{ project.image.url }});">
+    <div class="card__plate">
+      <div class="card__title">{{ project.title }}</div>
+      <div class="card__description">{{ project.description }}</div>
+      <div class="card__btns">
+        <a class="btn btn-outline-secondary" href="{{ project.url }}" target="_blank">Показать</a>
+      </div>
+    </div>
+  </div>
+</div>

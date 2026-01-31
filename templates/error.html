@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="message-block">
+   <h2>{% block err_title %}error{% endblock %}</h2>
+   {% block err_desc %}message{% endblock %}
+</div>
+{% endblock %}

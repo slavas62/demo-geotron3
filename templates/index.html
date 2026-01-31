@@ -1,0 +1,305 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+
+  <div class="section section_dark">
+    <div class="container-fluid">
+      <div class="row header">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 wrapper-menu">
+          <div class="menu-trigger" id="open-menu">
+            <img class="menu-trigger__img" src="{% static 'i/menu-icon.png' %}" alt="menu" />
+            <div class="menu-trigger__text">Меню</div>
+          </div>
+        </div>
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center wrapper-logo">
+          <a href="#">
+            <img
+              src="{% static 'i/logo.png' %}"
+              srcset="{% static 'i/logo@2x.png' %}"
+              alt="ГИП ГЕОТРОН"
+              class="logo"
+            />
+          </a>
+        </div>
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-right wrapper-signin">
+          <a href="//geotron.ntsomz.ru/docs" class="btn btn-secondary">О платформе</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="row form-news">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+          <img src="{% static 'i/system.png' %}" alt="" class="system-img" />
+        </div>
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 align-self-center">
+          <div class="form-text">
+            Геоинформационные сервисы на основе отечественных и зарубежных данных дистанционного зондирования Земли
+          </div>
+<!--
+          <form>
+            <div class="form-row">
+              <div class="col-auto">
+                <label for="news" class="sr-only">Новости</label>
+                <input type="email" class="form-control input-black" id="news" placeholder="Новости" >
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-secondary">Подписаться</button>
+              </div>
+            </div>
+          </form>
+-->      
+        </div>
+      </div>
+<!-- 
+      <div class="row">
+        <div class="col text-center">
+          <img src="{% static 'i/type.png' %}" alt="" class="type-img" >
+        </div>
+      </div>
+-->      
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="title">Примеры проектов</div>
+        </div>
+      </div>
+      <div class="row">
+      {% if project_list|length >= 1 %}
+         {% for project in project_list %}
+         {% include "project/card.html" %}
+             {% if forloop.counter|divisibleby:3 %}
+                 </div>
+                 <div class="row">
+             {% endif %}
+         {% endfor %}
+      {% else %}
+         {% include "message/empty.html" %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+  
+<!-- 
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="title">Категории услуг</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="category">
+            <div class="category__title">
+              <div class="category__title-img">
+                <img src="{% static 'i/agriculture-icon.png' %}" alt="" >
+              </div>
+              <div class="category__title-text">Сельское хозяйство</div>
+            </div>
+            <div class="category__description">Услуги в сфере сельского хозяйства</div>
+            <div class="category__links">
+              <a href="#" class="category__variants">Границы угодий</a>
+              <a href="#" class="category__variants">Состояние растительности</a>
+              <a href="#" class="category__variants">Контроль использования земель</a>
+            </div>
+            <div class="category__btns">
+              <div class="btn btn-outline-secondary">Все услуги</div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="category">
+            <div class="category__title">
+              <div class="category__title-img">
+                <img src="{% static 'i/forestry-icon.png' %}" alt="" >
+              </div>
+              <div class="category__title-text">Лесное хозяйство</div>
+            </div>
+            <div class="category__description">Услуги в сфере лесного хозяйства</div>
+            <div class="category__links">
+              <a href="#" class="category__variants">Обнаружение вырубок</a>
+              <a href="#" class="category__variants">Обнаружение пожаров</a>
+              <a href="#" class="category__variants">Таксация</a>
+            </div>
+            <div class="category__btns">
+              <div class="btn btn-outline-secondary">Все услуги</div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="category">
+            <div class="category__title">
+              <div class="category__title-img">
+                <img src="{% static 'i/subsoil-icon.png' %}" alt="" >
+              </div>
+              <div class="category__title-text">Недропользование</div>
+            </div>
+            <div class="category__description">Услуги в сфере недропользования</div>
+            <div class="category__links">
+              <a href="#" class="category__variants">Цифровая модель рельефа ЦМР</a>
+              <a href="#" class="category__variants">Измерение объема проделанных работ</a>
+              <a href="#" class="category__variants">Поиск полезных ископаемых</a>
+            </div>
+            <div class="category__btns">
+              <div class="btn btn-outline-secondary">Все услуги</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="category">
+            <div class="category__title">
+              <div class="category__title-img">
+                <img src="{% static 'i/mchs-logo.png' %}" alt="" >
+              </div>
+              <div class="category__title-text">Чрезвычайные<br>ситуации</div>
+            </div>
+            <div class="category__description">Мониторинг ЧС</div>
+            <div class="category__links">
+              <a href="#" class="category__variants">Мониторинг зон стихийных бедствий</a>
+              <a href="#" class="category__variants">Моделирование и анализ развития ЧС</a>
+              <a href="#" class="category__variants">Картографирование последствий ЧС</a>
+            </div>
+            <div class="category__btns">
+              <div class="btn btn-outline-secondary">Все услуги</div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="category">
+            <div class="category__title">
+              <div class="category__title-img">
+                <img src="{% static 'i/save-nature.png' %}" alt="" >
+              </div>
+              <div class="category__title-text">Природоохранная деятельность</div>
+            </div>
+            <div class="category__description">Услуги в сфере охраны природы</div>
+            <div class="category__links">
+              <a href="#" class="category__variants">Мониторинг состояния ООПТ</a>
+              <a href="#" class="category__variants">Выявление изменений ООПТ</a>
+              <a href="#" class="category__variants">Выявление нарушений охраны ООПТ </a>
+            </div>
+            <div class="category__btns">
+              <div class="btn btn-outline-secondary">Все услуги</div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="category">
+          <div class="category__title">
+            <div class="category__title-img">
+              <img src="{% static 'i/building.png' %}" alt="" >
+            </div>
+            <div class="category__title-text">Мониторинг строительства</div>
+          </div>
+          <div class="category__description">Услуги в сфере строительных работ</div>
+          <div class="category__links">
+            <a href="#" class="category__variants">Строительство крупных объектов</a>
+            <a href="#" class="category__variants">Экологический мониторинг</a>
+            <a href="#" class="category__variants">Информационное обеспечение</a>
+          </div>
+          <div class="category__btns">
+            <div class="btn btn-outline-secondary">Все услуги</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+-->
+
+<!--
+  <div class="section section_dark">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="title title_on-dark">Российские источники данных</div>
+        </div>
+      </div>
+-->
+<!--
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'i/info.png' %}" class="info-img" >
+        </div>
+      </div>
+-->
+<!--
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'i/info-1.png' %}" class="info-img" >
+        </div>
+      </div>
+      <br>
+-->
+<!--
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'i/info-2.png' %}" class="info-img" >
+        </div>
+      </div>
+-->
+<!--
+    </div>
+  </div>
+-->
+
+  <aside class="sidebar" id="sidebar">
+    <button class="btn-nostyle action clickable" type="button" id="close-nav">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="alclose-icon"
+        viewBox="0 0 20 20"
+        id="close"
+        width="100%"
+        height="100%"
+      >
+        <path d="M1.91.313L.313 1.91 8.402 10l-8.09 8.09 1.597 1.598 8.09-8.09 8.09 8.09 1.598-1.598-8.09-8.09 8.09-8.09L18.09.313 10 8.402z"></path>
+      </svg>
+      <span class="menu-label">Закрыть</span>
+    </button>
+    <ul class="menu">
+      <li>
+        <a class="block" href="/">
+          <div class="menu-label">Главная страница сайта</div>
+        </a>
+      </li>
+      <li>
+        <a class="block" href="//geotron.ntsomz.ru/accounts/login/">
+          <div class="menu-label">Авторизованный вход</div>
+        </a>
+      </li>
+      <li>
+        <a class="block" href="//geotron.ntsomz.ru/">
+          <div class="menu-label">Гостевой вход</div>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">
+        <svg width="16px" fill="none" height="16px" viewBox="0 0 16 16">
+          <rect y="4" width="16" height="4" fill="#F7F7F7"></rect>
+          <rect y="8" width="16" height="4" fill="#435CC2"></rect>
+          <rect y="12" width="16" height="4" fill="#DC4026"></rect>
+        </svg>
+        Ru © ГИП "Геотрон", РКС НЦ ОМЗ, <script>document.write(new Date().getFullYear())</script>
+      </span>
+    </div>
+  </footer>
+
+{% endblock %}
+
